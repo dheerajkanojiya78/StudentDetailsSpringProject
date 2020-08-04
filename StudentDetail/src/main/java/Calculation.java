@@ -80,6 +80,7 @@ public class Calculation {
 	  
 	    public static void main(String[] args) 
 	    { 
+	    	//Print
 	        System.out.println(Calculation.evaluate("( 10 + 2 ) * 6")); 
 	        System.out.println(Calculation.evaluate("100 * 2 + 12")); 
 	        System.out.println(Calculation.evaluate("( 2 + 12 ) *100")); 
