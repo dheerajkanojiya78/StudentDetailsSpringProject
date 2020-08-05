@@ -55,7 +55,6 @@ public class StudentControllerTest {
 		    	MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/createStudentRecord").accept(MediaType.APPLICATION_JSON).content(inputJson)).andReturn();
 		    	int status = mvcResult.getResponse().getStatus();
 		    	assertNotNull(mvcResult);
-				//assertEquals(200, status);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
