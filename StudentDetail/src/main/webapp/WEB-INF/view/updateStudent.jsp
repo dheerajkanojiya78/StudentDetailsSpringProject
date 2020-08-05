@@ -162,7 +162,6 @@
 										<div class="col-sm-10 col-sm-offset-2">
 										 <form:button id="studentUpdate" name="studentUpdate" 
 										 class="studentUpdate btn btn-primary btn-lg" style="display: inline-block; vertical-align: middle; vert-align: middle; float: none;">Update</form:button>
-											
 										</div>
 									</div>
 								</div>
