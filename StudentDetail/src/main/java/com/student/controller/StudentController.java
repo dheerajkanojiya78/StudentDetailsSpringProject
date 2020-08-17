@@ -130,7 +130,6 @@ public class StudentController {
 		return mav;
 	}
 
-
 	@RequestMapping(value="/updateStudentRecord/{id}", method=RequestMethod.GET)
 	@ResponseBody
 	public ModelAndView getStudentEntryForUpdate(HttpServletRequest request, HttpServletResponse response,@PathVariable String id){
