@@ -101,11 +101,12 @@ public class StudentDaoImpl implements StudentDao{
 		DateFormat dateFormate = new SimpleDateFormat("yyyy-MM-dd");	
 		Date date = new Date();
 		String currDate = dateFormate.format(date);
+		//Session session = sessionFactory.openSession();
 		try {
-			
-			Query createQuery = sessionFactory.getCurrentSession().createQuery("update Student set studentRollNumber= :rollNumber, studentFirstName= :firstName, "
+			//session.beginTransaction();
+			Query createQuery = sessionFactory.getCurrentSession().createQuery("update Student set studentId= :studentId, studentRollNumber= :rollNumber, studentFirstName= :firstName, "
 					+ "studentLastName= :lastName, percent= :percent, age= :age, emailId= :email, mobileNumber= :mobile, address= :address, stream= :stream, "
-					+ "createDate= :date where studentId= :studentId");
+					+ "sports= :sports, createDate= :date where studentRollNumber= :rollNumber");
 			createQuery.setInteger("studentId", student.getStudentId());
 			createQuery.setInteger("rollNumber", student.getStudentRollNumber());
 			createQuery.setString("firstName", student.getStudentFirstName());
@@ -116,8 +117,10 @@ public class StudentDaoImpl implements StudentDao{
 			createQuery.setString("stream", student.getStream());
 			createQuery.setString("address", student.getAddress());
 			createQuery.setString("email", student.getEmailId());
-			createQuery.setString("date", currDate);
+			createQuery.setDate("date", student.getCreateDate());
+			createQuery.setString("sports", student.getSports());
 			int executeUpdate = createQuery.executeUpdate();
+			//session.getTransaction().commit();
 			return executeUpdate;
 		} catch (HibernateException e) {
 			e.printStackTrace();

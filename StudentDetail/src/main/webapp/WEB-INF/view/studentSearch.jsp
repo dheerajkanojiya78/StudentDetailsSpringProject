@@ -5,103 +5,77 @@
 <html>
 <head>
 
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/bootstrap4.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/bootstrap3.min.js"></script>
+<!-- Title Page-->
+    <title>Search Student Record</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+    <!-- Icons font CSS-->
+    <link href="${pageContext.request.contextPath}/resources/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css"
-	rel="stylesheet" />
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
-	rel="stylesheet" />
-<link
-	href="${pageContext.request.contextPath}/resources/css/student.css"
-	rel="stylesheet" />
+    <!-- Vendor CSS-->
+    <link href="${pageContext.request.contextPath}/resources/css/select2.min.css" rel="stylesheet" media="all">
 
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Search Student Data</title>
+    <!-- Main CSS-->
+    <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet" media="all">
 </head>
 <body>
 
-<form:form id="studentSearchForm" modelAttribute="studentSearch" action="getStudentRecord" method="post">
-
-
-<div class="container cs-border-light-blue">
-
-		<!-- first line -->
-		<div class="row pad-top"></div>
-		<!-- end first line -->
-
-		<div class="equalheight row" style="padding-top: 10px;">
-			<div id="cs-main-body" class="cs-text-size-default pad-bottom">
-				<div class="col-sm-9  equalheight-col pad-top">
-					<div style="padding-bottom: 50px;">
-						<div class="row">
-							<div class="col-sm-12">
-								<legend>Search Student Details</legend>
-								<div class="row">
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label class="control-label col-sm-4"><a href="index.jsp">Home</a></label>
-												<label class="control-label col-sm-4"><a href="create">Create New Entry </a></label>
-											</div>
-										</div>
-										</div>
-								<div class="row">
-									<div class="col-sm-6">
-											<div class="form-group">
-											 <form:label path="studentRollNumber"  class="control-label col-sm-4">Student Roll Number</form:label>
-												<div class="col-sm-8">
-												<form:input path="studentRollNumber" name="studentRollNumber" id="studentRollNumber" class="form-control"
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Search Student Record</h2>
+                    <form:form id="studentSearchForm" modelAttribute="studentSearch" action="getStudentRecord" method="post">
+                    	<div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                <label class="label"><a href="index.jsp">Home</a> | <a href="create">Create New Entry </a></label>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="errormessage"></span>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                	<form:label path="studentRollNumber"  class="label">Student Roll Number</form:label>
+                                    <form:input path="studentRollNumber" name="studentRollNumber" id="studentRollNumber" class="input--style-4"
 															onkeypress="return onlyNumeric(event,this);"/>
-												</div>
-											</div>
-										</div>
-										
-										<div class="col-sm-6">
-											<div class="form-group">
-												<form:label path="emailId" class="control-label col-sm-4">Email-Id</form:label>
-												<div class="col-sm-8">
-												<form:input path="emailId" name="emailId" id="emailId" class="form-control" onkeypress="return onlyEmail(event,this);;"/>
-													
-												</div>
-											</div>
-										</div>
-										<div class="col-sm-6">
-											<div class="form-group">
-												<form:label path="mobileNumber" class="control-label col-sm-4">Mobile Number</form:label>
-												<div class="col-sm-8">
-												<form:input path="mobileNumber" name="mobileNumber" id="mobileNumber" class="form-control" 
-												 maxlength="10" minlength="10" onkeypress="return onlyNumeric(event,this);"/>
-												</div>
-											</div>
-										</div>
-								</div>
-								<div class="row">
-								<div class="col-sm-12">
-									<div class="form-group">
-										<div class="col-sm-10 col-sm-offset-2">
-										 <form:button id="studentSearch" name="studentSearch" 
-										 class="studentSearch btn btn-primary btn-lg" style="display: inline-block; vertical-align: middle; vert-align: middle; float: none;">Search</form:button>
-											
-										</div>
-									</div>
-								</div>
-							</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
- 
-</form:form>
-     
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                	<form:label path="emailId" class="label">Email-Id</form:label>
+									<form:input path="emailId" name="emailId" id="emailId" class="input--style-4" onkeypress="return onlyEmail(event,this);"/>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                	<form:label path="mobileNumber" class="label">Mobile Number</form:label>
+									<form:input path="mobileNumber" name="mobileNumber" id="mobileNumber" class="input--style-4" 
+										maxlength="10" minlength="10" onkeypress="return onlyNumeric(event,this);"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-t-15">
+                            <form:button id="studentSearch" name="studentSearch" class="studentSearch btn btn--radius-2 btn--blue">Search</form:button>
+                        </div>
+                    </form:form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jquery JS-->
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/moment.min.js"></script>
+    <script type="text/javascript" 
+	src="${pageContext.request.contextPath}/resources/js/student.js"></script>
 </body>
 </html>

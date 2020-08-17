@@ -1,6 +1,7 @@
 package com.student.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,12 +46,18 @@ public class StudentController {
 
 	@RequestMapping(value="/create", method=RequestMethod.GET)
 	public ModelAndView getCreatePage(HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView mav = new ModelAndView("student");
+		ModelAndView mav = new ModelAndView("studentCreate");
 		Map<String, String> stream = new HashMap<String, String>();
 		stream.put("SCIENCE", "Science");
 		stream.put("COMMERCE", "Commerce");
 		stream.put("ARTS", "Arts");
 		mav.addObject("streamList", stream);
+		List<String> sportsList = new ArrayList<String>();
+		sportsList.add("Cricket");
+		sportsList.add("Football");
+		sportsList.add("Sprint");
+		sportsList.add("Carrom");
+		mav.addObject("sportsList",sportsList);
 		mav.addObject("student", new StudentBean());
 		return mav;
 	}
@@ -99,10 +106,8 @@ public class StudentController {
 
 			if(!studentList.isEmpty() && studentList != null) {
 				studentList.stream().map(A -> studentBeanList.add(new StudentBean(A.getStudentId(),A.getStudentRollNumber(), A.getStudentFirstName(), A.getStudentLastName(),
-						A.getPercent(), A.getAge(), A.getEmailId(), A.getMobileNumber(), A.getAddress(), A.getStream(),A.getCreateDate()))).collect(Collectors.toList());
-
-				//studentList.forEach(A -> studentBeanList.add(new StudentBean(A.getStudentId(),A.getStudentRollNumber(), A.getStudentFirstName(), A.getStudentLastName(),
-						//A.getPercent(), A.getAge(), A.getEmailId(), A.getMobileNumber(), A.getAddress(), A.getStream(),A.getCreateDate())));
+						A.getPercent(), A.getAge(), A.getEmailId(), A.getMobileNumber(), A.getAddress(), A.getStream(),A.getCreateDate(),
+						new String[]{A.getSports()}))).collect(Collectors.toList());
 
 				if(!studentBeanList.isEmpty()) {
 					mav = new ModelAndView("searchResult");
@@ -144,6 +149,14 @@ public class StudentController {
 				mav.addObject("mobileNo", studentRecord.getMobileNumber());
 				mav.addObject("address", studentRecord.getAddress());
 				mav.addObject("streams", studentRecord.getStream());
+				List<String> asList = Arrays.asList(studentRecord.getSports());
+				mav.addObject("selectedSports",String.join(",", asList));
+				List<String> sportsList = new ArrayList<String>();
+				sportsList.add("Cricket");
+				sportsList.add("Football");
+				sportsList.add("Sprint");
+				sportsList.add("Carrom");
+				mav.addObject("sportsList",sportsList);
 				mav.addObject("updatedStudentRecord", new StudentBean());
 				
 			}
@@ -165,7 +178,7 @@ public class StudentController {
 			if(validateStudent != null && studentBean.getStudentRollNumber() == validateStudent.getStudentRollNumber()) {
 				int updatdeStudentRecord = studentServices.updateStudentRecord(studentBean);
 				
-				if(updatdeStudentRecord == 0) {
+				if(updatdeStudentRecord == 1) {
 					mav = new ModelAndView("response");
 					mav.addObject("message", "Updated Successfully");
 				}else {

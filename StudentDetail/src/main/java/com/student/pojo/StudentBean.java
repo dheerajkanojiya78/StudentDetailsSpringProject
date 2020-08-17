@@ -17,12 +17,13 @@ public class StudentBean {
 	private String stream;
 	private Date createDate;
 	private List<StudentBean> studentList;
+	private String[] sports;
 	
 	public StudentBean() {
 	}
 	
 	public StudentBean(int studentId,int studentRollNumber, String studentFirstName, String studentLastName, int percent, int age,
-			String emailId, String mobileNumber, String address, String stream, Date createDate) {
+			String emailId, String mobileNumber, String address, String stream, Date createDate,String[] sports) {
 		super();
 		this.studentId = studentId;
 		this.studentRollNumber = studentRollNumber;
@@ -35,6 +36,7 @@ public class StudentBean {
 		this.address = address;
 		this.stream = stream;
 		this.createDate = createDate;
+		this.sports = sports;
 	}
 	
 	
@@ -112,6 +114,13 @@ public class StudentBean {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
+
+	public String[] getSports() {
+		return sports;
+	}
+
+	public void setSports(String[] sports) {
+		this.sports = sports;
+	}
 	
 }

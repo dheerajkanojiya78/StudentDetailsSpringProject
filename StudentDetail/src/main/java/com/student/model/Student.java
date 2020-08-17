@@ -45,13 +45,16 @@ public class Student {
 	@Column(name="stream")
 	private String stream;
 	
+	@Column(name="sports")
+	private String sports;
+	
 	@Column(name="createdate")
 	private Date createDate;
 	
 	
 
 	public Student(int studentId, int studentRollNumber, String studentFirstName, String studentLastName, int percent,
-			int age, String emailId, String mobileNumber, String address, String stream, Date createDate) {
+			int age, String emailId, String mobileNumber, String address, String stream,String sports, Date createDate) {
 		super();
 		this.studentId = studentId;
 		this.studentRollNumber = studentRollNumber;
@@ -63,6 +66,7 @@ public class Student {
 		this.mobileNumber = mobileNumber;
 		this.address = address;
 		this.stream = stream;
+		this.sports = sports;
 		this.createDate = createDate;
 	}
 
@@ -149,6 +153,14 @@ public class Student {
 		this.stream = stream;
 	}
 
+	public String getSports() {
+		return sports;
+	}
+
+	public void setSports(String sports) {
+		this.sports = sports;
+	}
+
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -156,7 +168,5 @@ public class Student {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
-	
 	
 }

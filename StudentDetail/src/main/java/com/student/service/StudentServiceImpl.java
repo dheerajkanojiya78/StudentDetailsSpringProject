@@ -1,5 +1,6 @@
 package com.student.service;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -27,19 +28,22 @@ public class StudentServiceImpl implements StudentService{
 		return false;
 	}
 
-	public int updateStudentRecord(StudentBean student) {
+	public int updateStudentRecord(StudentBean studentBean) {
 		try {
 			Student studentEntity = new Student();
-			studentEntity.setStudentRollNumber(student.getStudentRollNumber());
-			studentEntity.setStudentFirstName(student.getStudentFirstName());
-			studentEntity.setStudentLastName(student.getStudentLastName());
-			studentEntity.setStream(student.getStream());
-			studentEntity.setAddress(student.getAddress());
-			studentEntity.setAge(student.getAge());
-			studentEntity.setEmailId(student.getEmailId());
-			studentEntity.setMobileNumber(student.getMobileNumber());
-			studentEntity.setPercent(student.getPercent());
+			studentEntity.setStudentId(studentBean.getStudentId());
+			studentEntity.setStudentRollNumber(studentBean.getStudentRollNumber());
+			studentEntity.setStudentFirstName(studentBean.getStudentFirstName());
+			studentEntity.setStudentLastName(studentBean.getStudentLastName());
+			studentEntity.setStream(studentBean.getStream());
+			studentEntity.setAddress(studentBean.getAddress());
+			studentEntity.setAge(studentBean.getAge());
+			studentEntity.setEmailId(studentBean.getEmailId());
+			studentEntity.setMobileNumber(studentBean.getMobileNumber());
+			studentEntity.setPercent(studentBean.getPercent());
 			studentEntity.setCreateDate(new Date());
+			List<String> asList = Arrays.asList(studentBean.getSports());
+			studentEntity.setSports(String.join(",", asList));
 			int updateStudentRecord = studentDao.updateStudentRecord(studentEntity);
 			return updateStudentRecord;
 		} catch (Exception e) {
@@ -48,19 +52,21 @@ public class StudentServiceImpl implements StudentService{
 		}
 	}
 
-	public boolean insertStudentRecord(StudentBean student) {
+	public boolean insertStudentRecord(StudentBean studentBean) {
 		try {
 			Student studentEntity = new Student();
-			studentEntity.setStudentRollNumber(student.getStudentRollNumber());
-			studentEntity.setStudentFirstName(student.getStudentFirstName());
-			studentEntity.setStudentLastName(student.getStudentLastName());
-			studentEntity.setStream(student.getStream());
-			studentEntity.setAddress(student.getAddress());
-			studentEntity.setAge(student.getAge());
-			studentEntity.setEmailId(student.getEmailId());
-			studentEntity.setMobileNumber(student.getMobileNumber());
-			studentEntity.setPercent(student.getPercent());
+			studentEntity.setStudentRollNumber(studentBean.getStudentRollNumber());
+			studentEntity.setStudentFirstName(studentBean.getStudentFirstName());
+			studentEntity.setStudentLastName(studentBean.getStudentLastName());
+			studentEntity.setStream(studentBean.getStream());
+			studentEntity.setAddress(studentBean.getAddress());
+			studentEntity.setAge(studentBean.getAge());
+			studentEntity.setEmailId(studentBean.getEmailId());
+			studentEntity.setMobileNumber(studentBean.getMobileNumber());
+			studentEntity.setPercent(studentBean.getPercent());
 			studentEntity.setCreateDate(new Date());
+			List<String> asList = Arrays.asList(studentBean.getSports());
+			studentEntity.setSports(String.join(",", asList));
 			studentDao.insertStudentRecord(studentEntity);
 			return true;
 		} catch (Exception e) {
@@ -102,6 +108,7 @@ public class StudentServiceImpl implements StudentService{
 				studentBean.setMobileNumber(student.getMobileNumber());
 				studentBean.setStream(student.getStream());
 				studentBean.setAddress(student.getAddress());
+				studentBean.setSports(new String[]{student.getSports()});
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

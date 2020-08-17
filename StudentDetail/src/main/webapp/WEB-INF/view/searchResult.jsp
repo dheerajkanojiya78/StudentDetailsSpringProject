@@ -4,6 +4,23 @@
         <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<!-- Title Page-->
+    <title>Students Record</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+    <!-- Icons font CSS-->
+    <link href="${pageContext.request.contextPath}/resources/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="${pageContext.request.contextPath}/resources/css/select2.min.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet" media="all">
+
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
 <script type="text/javascript"
@@ -26,41 +43,20 @@
 <title>Search Student Data</title>
 </head>
 <body>
-
-<form:form id="searchResult" method="post">
-
-		<div class="container cs-border-light-blue">
-
-			<!-- first line -->
-			<div class="row pad-top"></div>
-			<!-- end first line -->
-
-			<div class="equalheight row" style="padding-top: 10px;">
-				<div id="cs-main-body" class="cs-text-size-default pad-bottom">
-					<div class="col-sm-9  equalheight-col pad-top">
-						<div style="padding-bottom: 50px;">
-							<div class="row">
-								<div class="col-sm-12">
-									<legend>Searched Records</legend>
-									<div class="row">
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label class="control-label col-sm-4"><a href="index.jsp">Home</a></label> 
-												<label class="control-label col-sm-4"><a href="create">Create New Entry </a></label>
-												<label class="control-label col-sm-4"><a href="search">Search Record</a></label>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<table class="table" border=1>
+<div class="page-wrapper bg-gra-02 font-poppins">
+        <div class="wrapper wrapper--w680">
+                <div class="card-body">
+                    <h1 class="title" Style="color: tomato">Create Student Entry</h1>
+                    	<div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                <h3><label class="label"><a class="linkCol" href="index.jsp">Home</a> | <a class="linkCol" href="create">Create New Entry </a> | <a class="linkCol" href="search">Search</a></label></h3>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+        <table class="table tableDesg" border=1>
             <tr> 
             	 <th> Id </th>
            		 <th> Roll Number </th> 
@@ -72,6 +68,7 @@
            		 <th> Mobile Number </th> 
             	 <th> Address </th>
             	 <th> Stream </th>
+            	 <th> Sports </th>
             	 <th> Create date </th>
             	 <th> Update </th>
             	 <th> Delete </th>
@@ -89,14 +86,18 @@
    					<td> ${stud.mobileNumber} </td> 
    					<td> ${stud.address} </td>
    					<td> ${stud.stream} </td>
+   					<td>
+   						<c:forEach items="${stud.sports}" var="sport" varStatus="loop">
+   								 ${sport}
+  					 		<c:if test="${!loop.last}">,</c:if>
+   						</c:forEach>
+   					</td>
    					<td> ${stud.createDate} </td>
-   					<td> <a href="/StudentDetail/updateStudentRecord/${stud.studentRollNumber}" class="update">Update</a> </td>
-   					<td> <a href="/StudentDetail/deleteStudentRecord/${stud.studentRollNumber}" class="delete">Delete</a> </td>
+   					<td> <a href="${pageContext.request.contextPath}/updateStudentRecord/${stud.studentRollNumber}" class="update">Update</a> </td>
+   					<td> <a href="${pageContext.request.contextPath}/deleteStudentRecord/${stud.studentRollNumber}" class="delete">Delete</a> </td>
    				</tr>
 			</c:forEach>
-         
         </table>
-</form:form>
-
+    </div>
 </body>
 </html>

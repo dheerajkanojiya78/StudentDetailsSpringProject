@@ -51,7 +51,7 @@ public class StudentControllerTest {
 	    @Test
 	    public void createStudentEntry(){
 	    	try {
-	    		StudentBean studentBean = new StudentBean(1, 556644, "Harry", "lobo", 75, 16, "harr@gmail.com", "8796547856", "Navi Mumbai", "Science", new Date());
+	    		StudentBean studentBean = new StudentBean(1, 556644, "Harry", "lobo", 75, 16, "harr@gmail.com", "8796547856", "Navi Mumbai", "Science", new Date(),new String[] {"Cricket","Football"});
 		    	String inputJson = mapToJson(studentBean);
 		    	MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/createStudentRecord").accept(MediaType.APPLICATION_JSON).content(inputJson)).andReturn();
 		    	int status = mvcResult.getResponse().getStatus();
@@ -92,7 +92,7 @@ public class StudentControllerTest {
 	    @Test
 	    public void updateExistingStudentRecord(){
 	    	try {
-	    		StudentBean studentBean = new StudentBean(1, 556644, "Rayan", "lobo", 75, 16, "harr@gmail.com", "8796547856", "Navi Mumbai", "Science", new Date());
+	    		StudentBean studentBean = new StudentBean(1, 556644, "Rayan", "lobo", 75, 16, "harr@gmail.com", "8796547856", "Navi Mumbai", "Science", new Date(),new String[] {"Cricket","Football","Carrom"});
 		    	String inputJson = mapToJson(studentBean);
 		    	MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/updateStudentRecord/updateExistingStudentRecord")
 		    			.accept(MediaType.APPLICATION_JSON).content(inputJson)).andReturn();
